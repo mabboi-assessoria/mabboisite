@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MABBOI - Assessoria e Acompanhamento de Abate</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mabboi: {
+                            navy: '#0a2342',
+                            navyDark: '#06172e',
+                            navyLight: '#143863',
+                            green: '#286e34',
+                            greenHover: '#1f5628',
+                            greenLight: '#328841',
+                            greenSoft: '#eaf3ec',
+                            lightBg: '#f4f7f6',
+                            textDark: '#1a232c'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'custom': '0 10px 30px -5px rgba(10, 35, 66, 0.08)',
+                        'card-hover': '0 20px 40px -10px rgba(40, 110, 52, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8faf9;
+            color: #1a232c;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #286e34;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased text-slate-800">
+
+    <!-- TOP ANNOUNCEMENT BAR (Sem 'Atendimento em todo o território nacional') -->
+    <div class="bg-mabboi-navyDark text-white text-xs py-2 px-4 border-b border-mabboi-navyLight/30 hidden md:block">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-6">
+                <span><i class="fa-solid fa-shield-halved text-mabboi-green mr-2"></i>Transparência e exatidão do curral ao processo final</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#" data-config="phoneCallLink" class="hover:text-emerald-400 transition-colors">
+                    <i class="fa-solid fa-phone mr-1"></i> <span data-config="phoneDisplay">(94) 99201-6087</span>
+                </a>
+                <span class="text-slate-600">|</span>
+                <a href="#" data-config="emailLink" class="hover:text-emerald-400 transition-colors">
+                    <i class="fa-solid fa-envelope mr-1"></i> <span data-config="email">contato@mabboi.com.br</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- BRAND LOGO -->
+            <a href="#inicio" class="flex items-center gap-3 group">
+                <!-- Circular Emblem Image -->
+                <div class="relative w-12 h-12 flex items-center justify-center">
+                    <img src="imagens/Logo 2.png" 
+                         alt="MABBOI Ícone" 
+                         class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-300"
+                         onerror="this.onerror=null; this.src='https://placehold.co/100x100/0a2342/ffffff?text=MABBOI';">
+                </div>
+                <div class="flex flex-col">
+                    <!-- Logotype Image -->
+                    <div class="flex items-center py-1">
+                        <img src="imagens/Logo 3.1.png" 
+                             alt="MABBOI" 
+                             class="h-7 sm:h-8 object-contain"
+                             onerror="this.onerror=null; this.src='https://placehold.co/180x40/0a2342/ffffff?text=MABBOI';">
+                    </div>
+                    <!-- Subtitle remains as text -->
+                    <div class="flex items-center gap-1">
+                        <span class="h-[2px] w-2 bg-mabboi-green inline-block"></span>
+                        <span class="text-[9px] font-bold uppercase tracking-wider text-slate-500">Assessoria e Acompanhamento de Abate</span>
+                        <span class="h-[2px] w-2 bg-mabboi-green inline-block"></span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- DESKTOP NAV MENU -->
+            <nav class="hidden lg:flex items-center space-x-8 font-medium text-slate-700 text-sm">
+                <a href="#inicio" class="text-mabboi-green font-semibold hover:text-mabboi-green transition-colors">Início</a>
+                <a href="#sobre" class="hover:text-mabboi-green transition-colors">Sobre Nós</a>
+                <a href="#servicos" class="hover:text-mabboi-green transition-colors">Serviços</a>
+                <a href="#beneficios" class="hover:text-mabboi-green transition-colors">Benefícios</a>
+                <a href="#calculadora" class="hover:text-mabboi-green transition-colors flex items-center gap-1">
+                    <span class="bg-emerald-100 text-mabboi-green text-[10px] px-1.5 py-0.5 rounded font-bold uppercase">Novo</span>
+                    Simulador
+                </a>
+                <a href="#contato" class="hover:text-mabboi-green transition-colors">Contato</a>
+            </nav>
+
+            <!-- HEADER CTA BUTTON -->
+            <div class="hidden lg:flex items-center">
+                <a href="#" 
+                   data-config="whatsappBtn"
+                   target="_blank" 
+                   class="bg-mabboi-green hover:bg-mabboi-greenHover text-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 group">
+                    <span>Fale Conosco</span>
+                    <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-whatsapp text-white text-xs"></i>
+                    </div>
+                </a>
+            </div>
+
+            <!-- MOBILE MENU TOGGLE BUTTON -->
+            <button id="mobileMenuBtn" class="lg:hidden text-mabboi-navy p-2 focus:outline-none" aria-label="Abrir Menu">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- MOBILE MENU DROPDOWN -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-6 transition-all duration-300">
+            <div class="flex flex-col space-y-4 font-medium text-slate-700">
+                <a href="#inicio" class="mobile-link text-mabboi-green font-bold">Início</a>
+                <a href="#sobre" class="mobile-link hover:text-mabboi-green">Sobre Nós</a>
+                <a href="#servicos" class="mobile-link hover:text-mabboi-green">Serviços</a>
+                <a href="#beneficios" class="mobile-link hover:text-mabboi-green">Benefícios</a>
+                <a href="#calculadora" class="mobile-link hover:text-mabboi-green">Simulador de Economia</a>
+                <a href="#contato" class="mobile-link hover:text-mabboi-green">Contato</a>
+                <div class="pt-4 border-t border-slate-100">
+                    <a href="#" 
+                       data-config="whatsappBtn"
+                       target="_blank" 
+                       class="w-full bg-mabboi-green text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Fale no WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative bg-slate-100 pt-8 pb-20 md:py-24 overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-slate-200/50 -skew-x-12 translate-x-20 pointer-events-none hidden lg:block"></div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-mabboi-green/5 blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- HERO LEFT TEXT CONTENT -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    
+                    <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-mabboi-green px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-circle-check text-mabboi-green"></i>
+                        <span>Excelência em Acompanhamento Pecuário</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-mabboi-navy leading-[1.15] tracking-tight">
+                        Acompanhando cada etapa, <br class="hidden sm:inline"/>
+                        <span class="text-mabboi-green relative inline-block">
+                            garantindo cada resultado.
+                            <svg class="absolute -bottom-2 left-0 w-full h-2 text-mabboi-green/30" viewBox="0 0 100 20" preserveAspectRatio="none">
+                                <path d="M0 15 Q50 0 100 15" stroke="currentColor" stroke-width="4" fill="none"/>
+                            </svg>
+                        </span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+                        A <strong class="text-mabboi-navy font-semibold">Mabboi</strong> oferece assessoria completa e acompanhamento técnico de abate, garantindo qualidade do curral ao processo final.
+                    </p>
+
+                    <!-- ACTION BUTTONS -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#servicos" class="w-full sm:w-auto bg-mabboi-green hover:bg-mabboi-greenHover text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center transform hover:-translate-y-0.5">
+                            Nossos Serviços
+                        </a>
+                        <a href="#contato" class="w-full sm:w-auto bg-white border-2 border-mabboi-navy text-mabboi-navy hover:bg-mabboi-navy hover:text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 text-center">
+                            Fale Conosco
+                        </a>
+                    </div>
+
+                    <!-- TRUST BADGES -->
+                    <div class="pt-6 border-t border-slate-200/80 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs font-semibold text-slate-500">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-check text-mabboi-green text-sm"></i>
+                            <span>Acompanhamento em tempo real</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-check text-mabboi-green text-sm"></i>
+                            <span>Auditoria de Rendimento</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-check text-mabboi-green text-sm"></i>
+                            <span>Relatórios Detalhados</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- HERO RIGHT VISUAL -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        
+                        <!-- Main Cattle Image Box -->
+                        <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-800 group">
+                            <img src="imagens/imagemboi1.png" 
+                                 alt="Gado Nelore Mabboi Assessoria de Abate" 
+                                 class="w-full h-[420px] sm:h-[480px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                                 onerror="this.src='https://placehold.co/600x800/0a2342/ffffff?text=MABBOI+Assessoria+de+Abate'">
+                            
+                            <div class="absolute inset-0 bg-gradient-to-t from-mabboi-navyDark/80 via-transparent to-transparent"></div>
+
+                            <!-- Overlay Feature Badge -->
+                            <div class="absolute bottom-6 left-6 right-6 glass-card bg-mabboi-navy/90 border border-white/20 p-5 rounded-2xl text-white shadow-xl">
+                                <div class="space-y-2.5">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-6 h-6 rounded-full bg-mabboi-green flex items-center justify-center flex-shrink-0">
+                                            <i class="fa-solid fa-check text-white text-xs"></i>
+                                        </div>
+                                        <span class="font-bold text-sm tracking-wide">Acompanhamento Técnico</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-6 h-6 rounded-full bg-mabboi-green flex items-center justify-center flex-shrink-0">
+                                            <i class="fa-solid fa-check text-white text-xs"></i>
+                                        </div>
+                                        <span class="font-bold text-sm tracking-wide">Qualidade e conformidade</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-6 h-6 rounded-full bg-mabboi-green flex items-center justify-center flex-shrink-0">
+                                            <i class="fa-solid fa-check text-white text-xs"></i>
+                                        </div>
+                                        <span class="font-bold text-sm tracking-wide">Resultados que geram valor</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Stat Badge Top Right -->
+                        <div class="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 hidden sm:flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-100 text-mabboi-green flex items-center justify-center font-black text-xl">
+                                <i class="fa-solid fa-arrow-trend-up"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-semibold uppercase">Precisão Técnica</p>
+                                <p class="text-lg font-extrabold text-mabboi-navy">100% Auditado</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- NAVY BLUE PILLARS SECTION -->
+    <section class="bg-mabboi-navy text-white py-12 relative z-20 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+                
+                <!-- Pillar 1 -->
+                <div class="pt-6 sm:pt-0 sm:px-4 flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 rounded-2xl bg-mabboi-green flex items-center justify-center mb-4 text-2xl group-hover:scale-110 group-hover:bg-emerald-500 transition-all duration-300 shadow-lg">
+                        <i class="fa-solid fa-clipboard-check text-white"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1">Acompanhamento <br/>de Abate</h3>
+                    <p class="text-xs text-slate-300 font-light leading-relaxed">Presença ostensiva na linha de abate e pesagem de carcaças.</p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="pt-6 sm:pt-0 sm:px-4 flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 rounded-2xl bg-mabboi-green flex items-center justify-center mb-4 text-2xl group-hover:scale-110 group-hover:bg-emerald-500 transition-all duration-300 shadow-lg">
+                        <i class="fa-solid fa-shield-halved text-white"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1">Conformidade <br/>Sanitária</h3>
+                    <p class="text-xs text-slate-300 font-light leading-relaxed">Rigor no padrão normativo, toalete e inspeção higiênica.</p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="pt-6 sm:pt-0 sm:px-4 flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 rounded-2xl bg-mabboi-green flex items-center justify-center mb-4 text-2xl group-hover:scale-110 group-hover:bg-emerald-500 transition-all duration-300 shadow-lg">
+                        <i class="fa-solid fa-chart-line text-white"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1">Mais Qualidade <br/>para seu Negócio</h3>
+                    <p class="text-xs text-slate-300 font-light leading-relaxed">Maximizações do rendimento e eliminação de perdas desnecessárias.</p>
+                </div>
+
+                <!-- Pillar 4 -->
+                <div class="pt-6 sm:pt-0 sm:px-4 flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 rounded-2xl bg-mabboi-green flex items-center justify-center mb-4 text-2xl group-hover:scale-110 group-hover:bg-emerald-500 transition-all duration-300 shadow-lg">
+                        <i class="fa-solid fa-user-tie text-white"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1">Assessoria <br/>Especializada</h3>
+                    <p class="text-xs text-slate-300 font-light leading-relaxed">Técnicos altamente capacitados em defesa do pecuarista.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CALLOUT CARD BANNER -->
+    <section class="py-10 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200 flex flex-col lg:flex-row items-center justify-between gap-6">
+                
+                <div class="max-w-2xl text-center lg:text-left">
+                    <p class="text-lg sm:text-xl font-bold text-mabboi-navy leading-snug">
+                        Do curral ao processo final, cuidamos de cada etapa para o melhor resultado para você e sua produção.
+                    </p>
+                    <p class="text-xs text-slate-500 mt-1">Transparência total na pesagem e classificação de carcaças.</p>
+                </div>
+
+                <div class="flex-shrink-0">
+                    <a href="#" 
+                       data-config="whatsappBtn"
+                       target="_blank" 
+                       class="bg-mabboi-green hover:bg-mabboi-greenHover text-white font-bold px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center gap-2 group">
+                        <span>Fale com um Especialista</span>
+                        <i class="fa-solid fa-chevron-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <div class="bg-emerald-50/80 border border-emerald-100 rounded-2xl p-4 flex items-center gap-4 w-full lg:w-auto">
+                    <img src="imagens/Logo 2.png" alt="MABBOI Emblem" class="w-10 h-10 object-contain rounded-full bg-white p-0.5">
+                    <div>
+                        <img src="imagens/Logo 3.1.png" alt="MABBOI" class="h-5 object-contain mb-0.5">
+                        <p class="text-xs font-semibold text-mabboi-green">Seu parceiro em cada etapa</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US SECTION (Sobre Nós) -->
+    <section id="sobre" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 relative">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1570042707222-263a23863488?q=80&w=600&auto=format&fit=crop" 
+                             alt="Gado no Pasto" 
+                             class="rounded-2xl shadow-md h-64 w-full object-cover"
+                             onerror="this.src='https://placehold.co/400x500/0a2342/ffffff?text=Mabboi+Pecuaria'">
+                        <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?q=80&w=600&auto=format&fit=crop" 
+                             alt="Atuação em Frigorífico" 
+                             class="rounded-2xl shadow-md h-64 w-full object-cover mt-8"
+                             onerror="this.src='https://placehold.co/400x500/286e34/ffffff?text=Qualidade+Mabboi'">
+                    </div>
+                    <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-mabboi-navy text-white px-8 py-4 rounded-2xl shadow-xl text-center border-2 border-mabboi-green">
+                        <p class="text-3xl font-black text-emerald-400">100%</p>
+                        <p class="text-xs font-medium tracking-wider uppercase text-slate-200">Independência & Imparcialidade</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2 text-mabboi-green font-bold text-xs uppercase tracking-wider">
+                        <span class="w-8 h-[2px] bg-mabboi-green"></span>
+                        <span>Sobre a Mabboi</span>
+                    </div>
+
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-mabboi-navy leading-tight">
+                        A defesa legítima do seu investimento no momento mais crítico da produção.
+                    </h2>
+
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        A <strong class="text-mabboi-navy">Mabboi Assessoria e Acompanhamento de Abate</strong> nasceu da necessidade de proporcionar ao pecuarista total transparência, exatidão e justiça no processo de abate frigorífico.
+                    </p>
+
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        Nosso compromisso é acompanhar presencialmente cada etapa – desde a chegada dos animais, pesagem, toalete de carcaça até a apuração do romaneio final. Atuamos como seus olhos técnicos dentro da indústria.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-mabboi-green flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-bullseye"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-mabboi-navy text-sm">Precisão no Romaneio</h4>
+                                <p class="text-xs text-slate-500">Conferência rigorosa de balança e pesos de carcaça.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-mabboi-green flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-scissors"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-mabboi-navy text-sm">Auditoria de Toalete</h4>
+                                <p class="text-xs text-slate-500">Garantia contra limpezas e tiragens excessivas.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-100 grid grid-cols-3 gap-4 text-center">
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-mabboi-navy">+1 milhão</p>
+                            <p class="text-[11px] text-slate-500 uppercase font-semibold">Cabeças Acompanhadas</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-mabboi-navy">99%</p>
+                            <p class="text-[11px] text-slate-500 uppercase font-semibold">Índice de Satisfação</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-mabboi-navy">+20 anos</p>
+                            <p class="text-[11px] text-slate-500 uppercase font-semibold">Expertise de Campo</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION (Serviços) -->
+    <section id="servicos" class="py-20 bg-mabboi-lightBg relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-mabboi-green font-bold text-xs uppercase tracking-widest bg-emerald-100/60 px-3 py-1 rounded-full">Soluções Especializadas</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-mabboi-navy">Conheça Nossos Serviços de Assessoria</h2>
+                <p class="text-slate-600 text-sm sm:text-base">Oferecemos cobertura técnica em todas as fases para resguardar o rendimento real da sua boiada.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/80 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-mabboi-navy text-emerald-400 flex items-center justify-center text-2xl group-hover:bg-mabboi-green group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-truck-ramp-box"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-mabboi-navy">Recepção & Desembarque</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Acompanhamento do desembarque na curralagem, verificação do bem-estar animal, tempo de descanso, jejum e pesagem inicial.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/80 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-mabboi-navy text-emerald-400 flex items-center justify-center text-2xl group-hover:bg-mabboi-green group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-weight-scale"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-mabboi-navy">Acompanhamento da Pesagem</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Acompanhamento minucioso do processo de pesagem de carcaça quente garantindo aferição justa e aferição da balança.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/80 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-mabboi-navy text-emerald-400 flex items-center justify-center text-2xl group-hover:bg-mabboi-green group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-scissors"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-mabboi-navy">Inspeção no Trilho & Toalete</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Fiscalização rigorosa durante a remoção do couro e o acabamento das carcaças, evitando desperdícios e tiragens excessivas.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/80 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-mabboi-navy text-emerald-400 flex items-center justify-center text-2xl group-hover:bg-mabboi-green group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-mabboi-navy">Auditoria de Romaneio</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Conferência detalhada de lotes, pesos e parâmetros técnicos no relatório oficial emitido pelo frigorífico antes do faturamento.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/80 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-mabboi-navy text-emerald-400 flex items-center justify-center text-2xl group-hover:bg-mabboi-green group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-mabboi-navy">Conferência Balança/Tara</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Acompanhamento direto e verificação contínua das taras de ganchos e balanças eletrônicas antes e durante a pesagem.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/80 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-mabboi-navy text-emerald-400 flex items-center justify-center text-2xl group-hover:bg-mabboi-green group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-mabboi-navy">Relatórios em Tempo Real</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Envio de relatórios técnicos completos e fotos do processo direto para o seu WhatsApp durante o abate.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INTERACTIVE CALCULATOR SECTION (SEM TIPIFICAÇÃO AUDITADA) -->
+    <section id="calculadora" class="py-20 bg-mabboi-navy text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-mabboi-green/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+                <span class="bg-mabboi-green text-white font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full">Ferramenta Exclusiva</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Simulador de Economia e Proteção de Rendimento</h2>
+                <p class="text-slate-300 text-sm sm:text-base">Calcule quanto você pode evitar perder na carcaça (toalete excessivo e balança) ao contratar a Mabboi.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-mabboi-navyDark border border-white/10 p-6 sm:p-10 rounded-3xl shadow-2xl">
+                
+                <!-- Inputs Form -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- Input 1: Head Count -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <label for="headCount" class="font-bold text-slate-200">Quantidade de Animais (Cabeças):</label>
+                            <span id="headCountVal" class="font-extrabold text-emerald-400 text-base">100 cabeças</span>
+                        </div>
+                        <input type="range" id="headCount" min="20" max="1000" step="10" value="100" 
+                               class="w-full h-2.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                    </div>
+
+                    <!-- Input 2: Average Weight (@) -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <label for="avgWeight" class="font-bold text-slate-200">Peso Médio Estimado por Boi (@):</label>
+                            <span id="avgWeightVal" class="font-extrabold text-emerald-400 text-base">20.0 @</span>
+                        </div>
+                        <input type="range" id="avgWeight" min="14" max="26" step="0.5" value="20.0" 
+                               class="w-full h-2.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                    </div>
+
+                    <!-- Input 3: Price per @ -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <label for="arrobaPrice" class="font-bold text-slate-200">Valor Atual da Arroba (R$):</label>
+                            <span id="arrobaPriceVal" class="font-extrabold text-emerald-400 text-base">R$ 240,00</span>
+                        </div>
+                        <input type="range" id="arrobaPrice" min="180" max="350" step="5" value="240" 
+                               class="w-full h-2.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                    </div>
+
+                    <div class="p-4 bg-white/5 rounded-2xl border border-white/10 text-xs text-slate-300 space-y-1">
+                        <p class="font-bold text-white"><i class="fa-solid fa-circle-info text-emerald-400 mr-1"></i> Como calculamos?</p>
+                        <p>Consideramos a prevenção de perdas médias com toalete de carcaça excessivo, aferição rigorosa de balança e controle de tara de ganchos (~2,2% do valor total do lote).</p>
+                    </div>
+
+                </div>
+
+                <!-- Simulation Output Box (Sem linha de Tipificação Auditada) -->
+                <div class="lg:col-span-5 bg-gradient-to-br from-mabboi-green to-mabboi-greenHover p-8 rounded-2xl shadow-xl text-center space-y-6 relative overflow-hidden">
+                    <div class="absolute -right-8 -top-8 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+
+                    <div class="space-y-1">
+                        <p class="text-xs font-bold uppercase tracking-widest text-emerald-100">Economia / Proteção Estimada</p>
+                        <p id="totalSaved" class="text-3xl sm:text-4xl font-black text-white">R$ 10.560,00</p>
+                        <p id="perHeadSaved" class="text-xs font-medium text-emerald-100">≈ R$ 105,60 protegidos por cabeça</p>
+                    </div>
+
+                    <div class="pt-4 border-t border-white/20 space-y-3">
+                        <div class="flex justify-between text-xs text-emerald-50">
+                            <span>Faturamento Total do Lote:</span>
+                            <strong id="totalRevenue" class="text-white">R$ 480.000,00</strong>
+                        </div>
+                    </div>
+
+                    <a id="whatsappCalcBtn" 
+                       href="#" 
+                       target="_blank" 
+                       class="block w-full bg-mabboi-navy hover:bg-mabboi-navyDark text-white font-bold py-3.5 px-6 rounded-xl shadow-lg hover:shadow-2xl transition-all text-sm">
+                        <i class="fa-brands fa-whatsapp text-emerald-400 mr-2"></i> Agendar Acompanhamento
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BENEFITS / COMPARISON SECTION -->
+    <section id="beneficios" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-mabboi-green font-bold text-xs uppercase tracking-widest bg-emerald-100/60 px-3 py-1 rounded-full">Por que escolher a Mabboi?</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-mabboi-navy">A diferença entre vender sem e com Assessoria</h2>
+                <p class="text-slate-600 text-sm sm:text-base">Compare como a presença de um especialista qualificado muda o resultado do seu abate.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Without Mabboi -->
+                <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">Sem Acompanhamento Técnico</h3>
+                            <p class="text-xs text-slate-500">Risco total assumido pelo pecuarista</p>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-4 text-sm text-slate-600">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-xmark text-rose-500 mt-1 flex-shrink-0"></i>
+                            <span>Insegurança sobre o rigor na toalete e retirada excessiva na carcaça.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-xmark text-rose-500 mt-1 flex-shrink-0"></i>
+                            <span>Falta de auditoria presencial nos momentos cruciais de tara e pesagem.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-xmark text-rose-500 mt-1 flex-shrink-0"></i>
+                            <span>Falta de acompanhamento da limpeza e tiragens de gordura no trilho.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-xmark text-rose-500 mt-1 flex-shrink-0"></i>
+                            <span>Relatórios tardios sem registros fotográficos do processo de abate.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- With Mabboi -->
+                <div class="bg-emerald-50/50 border-2 border-mabboi-green rounded-3xl p-8 space-y-6 shadow-lg relative">
+                    <div class="absolute -top-3.5 right-6 bg-mabboi-green text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        Recomendado
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-mabboi-green text-white flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-mabboi-navy">Com Assessoria MABBOI</h3>
+                            <p class="text-xs text-mabboi-green font-semibold">Máxima eficiência e transparência auditada</p>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-4 text-sm text-slate-700 font-medium">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-mabboi-green text-base mt-0.5 flex-shrink-0"></i>
+                            <span>Supervisão constante da toalete de carcaça, evitando perdas desnecessárias.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-mabboi-green text-base mt-0.5 flex-shrink-0"></i>
+                            <span>Aferição rigorosa de balanças antes e durante a pesagem dos lotes.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-mabboi-green text-base mt-0.5 flex-shrink-0"></i>
+                            <span>Fiscalização da tiragem e limpeza no trilho do frigorífico.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-mabboi-green text-base mt-0.5 flex-shrink-0"></i>
+                            <span>Relatório técnico com dados precisos e fotos enviadas no seu WhatsApp.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+
+    <section id="testimonialsSection" class="py-20 bg-mabboi-lightBg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-mabboi-green font-bold text-xs uppercase tracking-widest bg-emerald-100/60 px-3 py-1 rounded-full">Depoimentos</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-mabboi-navy">Quem Confia na Mabboi Aprova</h2>
+                <p class="text-slate-600 text-sm sm:text-base">Veja o que dizem os produtores rurais que contam com nosso acompanhamento técnico.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200/70 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex text-amber-400 gap-1 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm italic leading-relaxed">
+                            "Depois que contratamos a equipe da Mabboi para acompanhar nossos abates, tivemos um ganho perceptível no rendimento de carcaça. O relatório técnico traz total tranquilidade."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-mabboi-navy text-white font-bold flex items-center justify-center text-sm">
+                            RP
+                        </div>
+                        <div>
+                            <p class="font-bold text-mabboi-navy text-sm">Ricardo Pires</p>
+                            <p class="text-xs text-slate-500">Pecuarista</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200/70 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex text-amber-400 gap-1 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm italic leading-relaxed">
+                            "A transparência é o forte deles. O técnico acompanha do curral até a pesagem final. Não entrego mais lote em frigorífico sem a presença da Mabboi."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-mabboi-green text-white font-bold flex items-center justify-center text-sm">
+                            FM
+                        </div>
+                        <div>
+                            <p class="font-bold text-mabboi-navy text-sm">Fernando Mendes</p>
+                            <p class="text-xs text-slate-500">Fazenda Primavera</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200/70 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex text-amber-400 gap-1 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm italic leading-relaxed">
+                            "Trabalho sério e de extrema competência. Garantiram a correta pesagem e conferência de tara dos ganchos na balança."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-mabboi-navy text-white font-bold flex items-center justify-center text-sm">
+                            JS
+                        </div>
+                        <div>
+                            <p class="font-bold text-mabboi-navy text-sm">João Silva</p>
+                            <p class="text-xs text-slate-500">Grupo Agronegócios</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contato" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-mabboi-navy rounded-3xl overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-12">
+                
+                <!-- Contact info side -->
+                <div class="lg:col-span-5 bg-gradient-to-br from-mabboi-navyDark to-mabboi-navy p-8 sm:p-12 text-white flex flex-col justify-between space-y-8">
+                    <div class="space-y-4">
+                        <span class="text-emerald-400 font-bold text-xs uppercase tracking-widest">Fale com Nossos Especialistas</span>
+                        <h2 class="text-3xl font-extrabold leading-tight">Agende seu Acompanhamento</h2>
+                        <p class="text-slate-300 text-sm">Preencha os dados ou entre em contato direto pelo WhatsApp. Atendemos com rapidez e eficiência.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-mabboi-green flex items-center justify-center flex-shrink-0 text-white">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase font-semibold">WhatsApp Comercial</p>
+                                <p class="text-base font-bold text-white" data-config="phoneDisplay">(94) 99201-6087</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-mabboi-green flex items-center justify-center flex-shrink-0 text-white">
+                                <i class="fa-solid fa-envelope text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase font-semibold">E-mail de Atendimento</p>
+                                <p class="text-base font-bold text-white" data-config="email">contato@mabboi.com.br</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-mabboi-green flex items-center justify-center flex-shrink-0 text-white">
+                                <i class="fa-solid fa-clock text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase font-semibold">Horário de Atendimento</p>
+                                <p class="text-base font-bold text-white" data-config="hours">Segunda a Sábado, das 06h às 19h</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-white/10 text-xs text-slate-400">
+                        <p>© Mabboi Assessoria e Acompanhamento de Abate. Todos os direitos reservados.</p>
+                    </div>
+                </div>
+
+                <!-- Contact form side -->
+                <div class="lg:col-span-7 bg-white p-8 sm:p-12">
+                    <form id="contactForm" class="space-y-5">
+                        <h3 class="text-xl font-bold text-mabboi-navy mb-2">Solicitar Orçamento de Acompanhamento</h3>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1" for="formName">Seu Nome *</label>
+                                <input type="text" id="formName" required placeholder="Ex: Roberto Silva" 
+                                       class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-mabboi-green text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1" for="formPhone">Telefone / WhatsApp *</label>
+                                <input type="tel" id="formPhone" required placeholder="(00) 99999-9999" 
+                                       class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-mabboi-green text-sm">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1" for="formCity">Cidade / Estado *</label>
+                                <input type="text" id="formCity" required placeholder="Ex: Marabá - PA" 
+                                       class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-mabboi-green text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1" for="formHeads">Previsão de Cabeças</label>
+                                <input type="text" id="formHeads" placeholder="Ex: 120 cabeças" 
+                                       class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-mabboi-green text-sm">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1" for="formFrig">Frigorífico Destino (Opcional)</label>
+                            <input type="text" id="formFrig" placeholder="Nome da unidade ou município do frigorífico" 
+                                   class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-mabboi-green text-sm">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1" for="formMsg">Observações adicionais</label>
+                            <textarea id="formMsg" rows="3" placeholder="Data provável do abate, raça do gado ou dúvidas..." 
+                                      class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-mabboi-green text-sm"></textarea>
+                        </div>
+
+                        <button type="submit" 
+                                class="w-full bg-mabboi-green hover:bg-mabboi-greenHover text-white font-bold py-4 rounded-xl shadow-lg transition-all text-sm flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Enviar via WhatsApp para Atendimento Rápido</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-mabboi-navyDark text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center gap-3">
+                        <img src="imagens/Logo 2.png" alt="MABBOI" class="w-10 h-10 object-contain rounded-full bg-white p-0.5">
+                        <img src="imagens/Logo 3.1.png" alt="MABBOI" class="h-6 object-contain filter brightness-0 invert">
+                    </div>
+                    <p class="text-xs leading-relaxed text-slate-400">
+                        Assessoria e Acompanhamento Técnico de Abate. Garantindo segurança, transparência e retorno financeiro no frigorífico.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4">Navegação</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#inicio" class="hover:text-emerald-400 transition-colors">Início</a></li>
+                        <li><a href="#sobre" class="hover:text-emerald-400 transition-colors">Sobre Nós</a></li>
+                        <li><a href="#servicos" class="hover:text-emerald-400 transition-colors">Serviços</a></li>
+                        <li><a href="#beneficios" class="hover:text-emerald-400 transition-colors">Benefícios</a></li>
+                        <li><a href="#calculadora" class="hover:text-emerald-400 transition-colors">Simulador</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4">Serviços</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li>Acompanhamento de Pesagem</li>
+                        <li>Auditoria de Toalete</li>
+                        <li>Verificação de Tara e Balança</li>
+                        <li>Conferência de Romaneio</li>
+                        <li>Relatórios fotográficos</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4">Redes Sociais & Contato</h4>
+                    <div class="flex gap-3 mb-4">
+                        <a href="#" data-config="instagramLink" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-mabboi-green transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" data-config="facebookLink" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-mabboi-green transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" data-config="linkedinLink" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-mabboi-green transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                    <p class="text-xs text-slate-400"><i class="fa-solid fa-phone mr-1"></i> <span data-config="phoneDisplay">(94) 99201-6087</span></p>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-slate-800 text-center text-xs text-slate-500">
+                <p>&copy; 2026 Mabboi Assessoria e Acompanhamento de Abate. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * =========================================================================
+         *  MABBOI CONFIGURAÇÕES CENTRAIS (ALTERE AQUI PARA MUDAR EM TODO O SITE)
+         * =========================================================================
+         */
+        const MABBOI_CONFIG = {
+            phoneDisplay: "(94) 99201-6087",
+            phoneClean: "5594992016087",
+            email: "mabboi.assessoria@gmail.com",
+            hours: "Segunda a Sábado, das 06h às 19h",
+            companyName: "MABBOI - Assessoria e Acompanhamento de Abate",
+            showTestimonials: false,   // ← mude para true quando quiser exibir
+
+            // Links de Redes Sociais (Altere aqui os seus links)
+            instagram: "https://www.instagram.com/",
+            facebook: "https://www.facebook.com/",
+            linkedin: "https://www.linkedin.com/"
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // 1. Atualizar todos os elementos vinculados às variáveis globais
+            document.querySelectorAll('[data-config="phoneDisplay"]').forEach(el => el.textContent = MABBOI_CONFIG.phoneDisplay);
+            document.querySelectorAll('[data-config="email"]').forEach(el => el.textContent = MABBOI_CONFIG.email);
+            document.querySelectorAll('[data-config="hours"]').forEach(el => el.textContent = MABBOI_CONFIG.hours);
+            
+            document.querySelectorAll('[data-config="phoneCallLink"]').forEach(el => {
+                el.href = `tel:${MABBOI_CONFIG.phoneClean}`;
+            });
+            
+            document.querySelectorAll('[data-config="emailLink"]').forEach(el => {
+                el.href = `mailto:${MABBOI_CONFIG.email}`;
+            });
+
+            // Vinculação dos links de redes sociais
+            document.querySelectorAll('[data-config="instagramLink"]').forEach(el => el.href = MABBOI_CONFIG.instagram);
+            document.querySelectorAll('[data-config="facebookLink"]').forEach(el => el.href = MABBOI_CONFIG.facebook);
+            document.querySelectorAll('[data-config="linkedinLink"]').forEach(el => el.href = MABBOI_CONFIG.linkedin);
+
+            // Controle de exibição da seção de depoimentos
+            if (!MABBOI_CONFIG.showTestimonials) {
+                const testimonialsSection = document.getElementById('testimonialsSection');
+                if (testimonialsSection) {
+                    testimonialsSection.style.display = 'none';
+                }
+            }
+            
+            // Atualizar botões padrão do WhatsApp
+            const defaultWhatsappMsg = encodeURIComponent("Olá! Gostaria de saber mais sobre a Assessoria e Acompanhamento de Abate da Mabboi.");
+            document.querySelectorAll('[data-config="whatsappBtn"]').forEach(el => {
+                el.href = `https://wa.me/${MABBOI_CONFIG.phoneClean}?text=${defaultWhatsappMsg}`;
+            });
+
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+
+            // Yield Calculator Logic (Sem Tipificação Auditada)
+            const headCountInput = document.getElementById('headCount');
+            const avgWeightInput = document.getElementById('avgWeight');
+            const arrobaPriceInput = document.getElementById('arrobaPrice');
+
+            const headCountVal = document.getElementById('headCountVal');
+            const avgWeightVal = document.getElementById('avgWeightVal');
+            const arrobaPriceVal = document.getElementById('arrobaPriceVal');
+
+            const totalSavedEl = document.getElementById('totalSaved');
+            const perHeadSavedEl = document.getElementById('perHeadSaved');
+            const totalRevenueEl = document.getElementById('totalRevenue');
+            const whatsappCalcBtn = document.getElementById('whatsappCalcBtn');
+
+            function formatBRL(val) {
+                return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val);
+            }
+
+            function updateCalculator() {
+                const heads = parseInt(headCountInput.value);
+                const weight = parseFloat(avgWeightInput.value);
+                const price = parseFloat(arrobaPriceInput.value);
+
+                // UI display texts
+                headCountVal.textContent = `${heads} cabeças`;
+                avgWeightVal.textContent = `${weight.toFixed(1)} @`;
+                arrobaPriceVal.textContent = formatBRL(price);
+
+                // Core calculations
+                const totalRevenue = heads * weight * price;
+                // Prevenção de perdas médias por toalete excessivo + auditoria de balança (~2.2% do total)
+                const totalSaved = totalRevenue * 0.022;
+                const perHeadSaved = totalSaved / heads;
+
+                totalSavedEl.textContent = formatBRL(totalSaved);
+                perHeadSavedEl.textContent = `≈ ${formatBRL(perHeadSaved)} protegidos por cabeça`;
+                totalRevenueEl.textContent = formatBRL(totalRevenue);
+
+                // Dynamic WhatsApp Link generation for calculated result
+                const msg = `Olá! Fiz uma simulação no site da Mabboi:%0A- Lote: ${heads} cabeças%0A- Peso Médio: ${weight} @%0A- Valor da Arroba: ${formatBRL(price)}%0A- Economia/Proteção Estimada: ${formatBRL(totalSaved)}%0AGostaria de agendar o acompanhamento!`;
+                whatsappCalcBtn.href = `https://wa.me/${MABBOI_CONFIG.phoneClean}?text=${msg}`;
+            }
+
+            if (headCountInput && avgWeightInput && arrobaPriceInput) {
+                headCountInput.addEventListener('input', updateCalculator);
+                avgWeightInput.addEventListener('input', updateCalculator);
+                arrobaPriceInput.addEventListener('input', updateCalculator);
+                updateCalculator();
+            }
+
+            // Contact Form WhatsApp Generation
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('formName').value;
+                    const phone = document.getElementById('formPhone').value;
+                    const city = document.getElementById('formCity').value;
+                    const heads = document.getElementById('formHeads').value || 'Não informado';
+                    const frig = document.getElementById('formFrig').value || 'Não informado';
+                    const msg = document.getElementById('formMsg').value || 'Sem observações';
+
+                    const text = `*Nova Solicitacao de Orcamento - MABBOI*%0A%0A*Nome:* ${encodeURIComponent(name)}%0A*Telefone:* ${encodeURIComponent(phone)}%0A*Cidade/UF:* ${encodeURIComponent(city)}%0A*Previsão de Cabeças:* ${encodeURIComponent(heads)}%0A*Frigorífico:* ${encodeURIComponent(frig)}%0A*Mensagem:* ${encodeURIComponent(msg)}`;
+
+                    window.open(`https://wa.me/${MABBOI_CONFIG.phoneClean}?text=${text}`, '_blank');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
